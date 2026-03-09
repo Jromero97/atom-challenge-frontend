@@ -1,6 +1,6 @@
 @import '../../../../../styles.scss';
 
-.list-section {
+:host {
     display: flex;
     flex-direction: column;
     gap: 1rem;

@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +28,8 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatChipsModule,
     HttpClientModule,
-    TaskListComponent
+    TaskListComponent,
+    MatIconModule,
   ],
   providers: [AuthService, TaskService],
   templateUrl: './dashboard.component.html',
