@@ -13,13 +13,13 @@ jobs:
       - name: Node Configurations
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
       - name: Install Dependencies
-        uses: npm ci
+        run: npm ci
 
       - name: Build angular application
-        uses: ng build --configuration production
+        run: ng build --configuration production
       
       - name: Deploy to firebase Hosting
         uses: FirebaseExtended/actions-hosting-deploy@v0
