@@ -1,36 +1,87 @@
-# ATOM FE CHALLENGE TEMPLATE - ANGULAR
+# Atom Technical Challenge - Frontend
 
-Este proyecto es una plantilla con lo necesario para comenzar a desarrollar el front-end de la aplicación de la prueba técnica de Atom. Se base en Angular con la versión 17.3.6.
-Se ha realizado la instalación y configuración de varias dependencias necesarias para el desarrollo de la aplicación, como por ejemplo: Angular Material.
+This repository contains the frontend implementation for the Atom Technical Challenge. It is built using **Angular v17**, **Angular Material**, and **TypeScript**, utilizing modern paradigms like Signals for reactive state management.
 
-## Instrucciones
-Siéntete libre de clonar este repositorio y utilizarlo como base para el desarrollo de la aplicación. Sigue las indicates de la prueba técnica para completar la aplicación y desarrolla como más te sientas cómodo.
+## 🚀 Features
 
-De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
+- **Firebase Passwordless Authentication:** Secure, email-link based authentication flow leveraging Firebase Auth `v12`.
+- **Task Management Dashboard:** Fully functional CRUD operations for tasks, communicating with a RESTful backend API.
+- **Modern Angular State Management:** Utilizes Angular `v17` Signals (`computed`, `signal`, `toSignal`) combined with RxJS for reactive and efficient state synchronization.
+- **UI/UX Components:** Built with **Angular Material** and **SCSS** to provide a clean, responsive, and accessible user interface.
+- **Code Quality & Testing:** Pre-configured with **ESLint** for static code analysis, and **Karma/Jasmine** for unit testing.
 
-## Comentarios sobre el desarrollo
-...
+## 🛠 Tech Stack
 
-## Development server
+- **Framework:** [Angular v17.3](https://angular.dev)
+- **UI Library:** [Angular Material v17.3](https://material.angular.io/)
+- **Authentication:** [Firebase Auth v12.10](https://firebase.google.com/docs/auth)
+- **Reactivity:** RxJS & Angular Signals
+- **Testing:** Karma & Jasmine
+- **Linting:** ESLint & Angular ESLint plugins
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ⚙️ Prerequisites
 
-## Code scaffolding
+Before you begin, ensure you have met the following requirements:
+* **Node.js:** version `^18.13.0` or higher `(>= 20.0.0 recommended)`.
+* **npm:** Node Package Manager (comes with Node.js).
+* **Angular CLI:** `npm install -g @angular/cli@17.3.6`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 📦 Installation & Setup
 
-## Build
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Jromero97/atom-challenge-frontend.git
+   cd atom-challenge-frontend
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. **Install project dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Running unit tests
+3. **Environment Configuration:**
+   Create or verify the `src/environments/environment.ts` (and `environment.development.ts`) files containing your backend API and Firebase configurations.
+   
+   *Example:*
+   ```typescript
+   export const environment = {
+     production: false,
+     apiUrl: 'http://localhost:3000/api', // Replace with actual API URL
+     redirectUrl: 'http://localhost:4200/login',
+     // Add your Firebase config here if not already present
+   };
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 💻 Making It Run
 
-## Running end-to-end tests
+### Development Server
+Run `npm run start` or `ng serve` to launch a development server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Build for Production
+Run `npm run build` or `ng build`. The build artifacts will be stored in the `dist/` directory.
 
-## Further help
+### Running Unit Tests
+Run `npm run test` or `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Linting
+Run `npm run lint` or `ng lint` to find and fix problems in your Angular code.
+
+## 🗂 Project Structure
+
+```text
+src/
+├── app/
+│   ├── core/              # Singleton services, models, guards, and shared core components
+│   │   ├── components/    # Reusable structural components (navbars, dialogs)
+│   │   ├── guards/        # Route protection logic
+│   │   ├── models/        # TypeScript interfaces and types
+│   │   └── services/      # Business logic (e.g., AuthService, TaskService)
+│   ├── modules/           # Feature modules
+│   │   ├── auth/          # Passwordless login and auth components
+│   │   ├── dashboard/     # Task list, task creation, and dashboard views
+│   │   └── example-page/  # Placeholder for extra views
+│   ├── app.component.*    # Root component
+│   └── app.routes.ts      # Application routing
+├── environments/          # Environment-specific configuration variables
+└── main.ts                # Application entry point
+```
