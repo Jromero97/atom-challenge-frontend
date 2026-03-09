@@ -1,0 +1,11 @@
+@if (tasks().length === 0) {
+<div class="empty-state">
+    <mat-icon class="empty-icon">assignment</mat-icon>
+    <h3 class="empty-title">No tasks yet</h3>
+    <p class="empty-desc">Add a task to get started!</p>
+</div>
+}
+@for (task of tasks(); track task.id) {
+<app-task-list-item [task]="task" (onDelete)="onDeleteTask($event)" (onEdit)="onEditTask($event)"
+    (onToggleComplete)="onToggleCompleteTask($event)"></app-task-list-item>
+}

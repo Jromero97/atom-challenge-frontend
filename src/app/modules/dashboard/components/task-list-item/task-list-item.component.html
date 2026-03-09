@@ -1,0 +1,29 @@
+<mat-card class="task-card" [class.completed]="task().completed">
+    <mat-card-content class="task-card-content">
+        <mat-checkbox [checked]="task().completed" (change)="onToggleCompleteTask(task())" color="primary"
+            class="task-checkbox"></mat-checkbox>
+
+        <div class="task-details">
+            <h3 class="task-title" [class.completed-text]="task().completed">
+                {{ task().title }}
+            </h3>
+            <p class="task-description" [class.completed-text]="task().completed">
+                {{ task().createdAt | date:'mediumDate'}} | {{ task().description }}
+            </p>
+            <mat-chip-set role="list" aria-label="Tags">
+                @for (tag of task().tags; track tag) {
+                <mat-chip role="listitem">{{ tag }}</mat-chip>
+                }
+            </mat-chip-set>
+        </div>
+
+        <div class="task-actions">
+            <button mat-icon-button color="primary" (click)="onEditTask(task())">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="onDeleteTask(task().id!)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+    <div class="dashboard-header-wrapper">
+        <h1 class="dashboard-title">My Tasks</h1>
+        <div class="user-actions">
+            <span class="user-email">{{ currentUser()?.email }}</span>
+            <button mat-stroked-button color="warn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="dashboard-layout">
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <mat-card class="task-form-card">
+                <mat-card-header class="task-form-header">
+                    <mat-card-title>{{ editingTaskId ? 'Edit Task' : 'New Task' }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title" placeholder="Task title">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput formControlName="description" rows="3"
+                                placeholder="Task description"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Add Tag</mat-label>
+                            <input matInput [matChipInputFor]="chipGrid"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addTag()"
+                                placeholder="Add tags" formControlName="tag">
+                            <mat-chip-grid #chipGrid aria-label="Tags selection">
+                                @for (tag of tags; track tag) {
+                                <mat-chip-row (removed)="removeTag(tag)" removable>
+                                    {{ tag }}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                }
+                            </mat-chip-grid>
+                            <mat-hint>Press comma (,) to add tags</mat-hint>
+                        </mat-form-field>
+
+                        <div class="form-actions">
+                            <button mat-flat-button color="primary" type="submit" [disabled]="taskForm.invalid"
+                                class="submit-btn flex-1">
+                                {{ editingTaskId ? 'Update' : 'Add' }}
+                            </button>
+                            @if (editingTaskId) {
+                            <button mat-stroked-button type="button" (click)="cancelEdit()">Cancel</button>
+                            }
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- List Section -->
+        <app-task-list [tasks]="tasks" (onEditItem)="editTask($event)" (onDeleteItem)="deleteTask($event)"
+            (onToggleCompleteItem)="toggleComplete($event)"></app-task-list>
+
+    </div>
+</div>

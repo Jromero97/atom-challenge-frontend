@@ -1,4 +1,30 @@
 @import "assets/styles/theme";
+// Global SCSS variables
+$primary-color: #3f51b5;
+$bg-color: #f9fafb; // Tailwind's gray-50
+$text-dark: #111827; // Tailwind's gray-900
+$text-muted: #6b7280; // Tailwind's gray-500
+$success-color: #22c55e; // Tailwind's green-500
+$danger-color: #ef4444; // Tailwind's red-500
+$border-color: #f3f4f6;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
+    background-color: $bg-color;
+    color: $text-dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}

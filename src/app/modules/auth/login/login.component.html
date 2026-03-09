@@ -1,0 +1,38 @@
+<div class="login-container">
+    <div class="login-wrapper">
+        <mat-card class="login-card">
+            <img class="logo" src="assets/images/logo-atom-chat.png" alt="ATOM Logo">
+
+            <mat-card-header class="login-header">
+                <mat-card-title class="login-title">Welcome to Tech Task</mat-card-title>
+                <mat-card-subtitle class="login-subtitle">Enter your email to sign in or create an
+                    account</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                @if (!isEmailSent) {
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Email address</mat-label>
+                        <input matInput type="email" formControlName="email" placeholder="you@example.com">
+                        @if (loginForm.controls.email.invalid && loginForm.controls.email.touched) {
+                        <mat-error>Please enter a valid email address</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid"
+                        class="submit-button">
+                        Sign In
+                    </button>
+                </form>
+                } @else {
+                <div class="success-message">
+                    <h3 class="success-title">Email Sent!</h3>
+                    <p class="success-desc">Please check your inbox for the login link.</p>
+                    <p class="success-note">You can close this tab safely.</p>
+                </div>
+                }
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -30,8 +30,7 @@ $orange-atom-palette: (
   A200: #ffab40,
   A400: #ff9100,
   A700: #ff6d00,
-  contrast: (
-    50: $dark-primary-text,
+  contrast: (50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $dark-primary-text,
@@ -63,8 +62,7 @@ $blue-accent-palette: (
   A200: #448aff,
   A400: #2979ff,
   A700: #2962ff,
-  contrast: (
-    50: $dark-primary-text,
+  contrast: (50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $dark-primary-text,
@@ -81,31 +79,28 @@ $blue-accent-palette: (
   )
 );
 
-$atom-challenge-fe-template-primary: mat.define-palette($orange-atom-palette, 900);
-$atom-challenge-fe-template-accent: mat.define-palette($blue-accent-palette, A200, A100, A400);
+$atom-challenge-frontend-primary: mat.define-palette($orange-atom-palette, 900);
+$atom-challenge-frontend-accent: mat.define-palette($blue-accent-palette, A200, A100, A400);
 
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
 
-$atom-typography: mat.define-typography-config(
-  $font-family: Inter,
-);
+$atom-typography: mat.define-typography-config($font-family: Inter,
+  );
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$atom-challenge-fe-template-theme: mat.define-light-theme((
-  color: (
-    primary: $atom-challenge-fe-template-primary,
-    accent: $atom-challenge-fe-template-accent,
-    warn: $my-warn,
-  ),
-  typography: $atom-typography,
-));
+$atom-challenge-frontend-theme: mat.define-light-theme((color: (primary: $atom-challenge-frontend-primary,
+        accent: $atom-challenge-frontend-accent,
+        warn: $my-warn,
+      ),
+      typography: $atom-typography,
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($atom-challenge-fe-template-theme);
+@include mat.all-component-themes($atom-challenge-frontend-theme);
 
 
 /* You can add global styles to this file, and also import other style files */

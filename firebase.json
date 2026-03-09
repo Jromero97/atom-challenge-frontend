@@ -1,0 +1,16 @@
+{
+    "hosting": {
+        "public": "dist/atom-challenge-frontend/browser",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "rewrites": [
+            {
+                "sources": "**",
+                "destination": "/index.html"
+            }
+        ]
+    }
+}
