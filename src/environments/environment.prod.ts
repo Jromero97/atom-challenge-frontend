@@ -9,5 +9,5 @@ export const environment = {
         messagingSenderId: "1069968239792",
         appId: "1:1069968239792:web:503569707497030808134"
     },
-    redirectUrl: 'http://localhost:4200/dashboard'
+    redirectUrl: 'https://atom-task-54d02.web.app/dashboard'
 };
